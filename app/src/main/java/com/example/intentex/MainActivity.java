@@ -62,9 +62,11 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == ReturnRegisterCode) {
                 String name = data.getStringExtra("nameRegister");
                 String email = data.getStringExtra("emailRegister");
+                String phoneNum = data.getStringExtra("phoneNumRegister");
                 textViewReturn.setText("Register : \n");
                 textViewReturn.append("Name : " + name + "\n");
                 textViewReturn.append("Email : " + email + "\n");
+                textViewReturn.append("Phone Number : " + phoneNum + "\n");
             }
         }else if(requestCode == OrderRequestCode) {
             Log.d(TAG, "requestCode = " + requestCode);
