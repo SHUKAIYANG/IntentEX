@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText editTextName,editTextEmail;
+    private EditText editTextName,editTextEmail, editTextPhoneNum;
     private Context context;
     private Button buttonCancel, buttonOK;
     private final int ReturnRegisterCode = 2;
@@ -29,6 +29,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         editTextEmail = (EditText) findViewById(R.id.editText_emailRegister);
         editTextEmail.setText("");
+
+        editTextPhoneNum = (EditText) findViewById(R.id.editText_phoneNum);
+        editTextPhoneNum.setText("");
 
         buttonCancel = (Button) findViewById(R.id.button_cancelRegister);
         buttonOK = (Button) findViewById(R.id.button_okRegister);
@@ -47,17 +50,22 @@ public class RegisterActivity extends AppCompatActivity {
                 case R.id.button_cancelRegister:
                     editTextName.setText("");
                     editTextEmail.setText("");
+                    editTextPhoneNum.setText("");
                     break;
 
                 case R.id.button_okRegister:
+
                     String name = editTextName.getText().toString();
                     String email = editTextEmail.getText().toString();
-                    if(name.length() == 0 || email.length() == 0) {
+                    String phoneNum = editTextPhoneNum.getText().toString();
+
+                    if(name.length() == 0 || email.length() == 0 || phoneNum.length() == 0) {
                         Toast.makeText(context, "Please input name and Email.", Toast.LENGTH_SHORT).show();
                     }else {
                         Intent intent = new Intent();
                         intent.putExtra("nameRegister", name);
                         intent.putExtra("emailRegister", email);
+                        intent.putExtra("phoneNumRegister", phoneNum);
                         setResult(ReturnRegisterCode, intent);
                         finish();
                     }
